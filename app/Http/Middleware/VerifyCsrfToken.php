@@ -20,5 +20,13 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        '/tambahAdmin',
+        '/loginAdmin',
+        '/hapusAdmin',
+        '/listAdmin',
+        '/tambahKonten',
+        '/ubahKonten',
+        '/hapusKonten',
+        '/listKonten'
     ];
 }
