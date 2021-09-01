@@ -70,7 +70,7 @@ class kontenController extends Controller
 
     public function ubahKonten(Request $request){
         $validator = Validator::make($request->all(),[
-            'judul' =>'required | required| unique:tbl_konten,judul'.$request->id_konten.',id_konten',
+            'judul' =>'required |  unique:tbl_konten,judul,'.$request->id_konten.',id_konten',
             'keterangan' =>'required',
             'link_thumbnail' => 'required',
             'link_video'     => 'required',
@@ -98,7 +98,7 @@ class kontenController extends Controller
                     ]
                 )){
                     return response()->json([
-                        'status' => 'Berhasil',
+                        'status' => 'berhasil',
                         'message' => 'Data berhasil dirubah'
                     ]);
                 }else{

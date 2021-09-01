@@ -45,7 +45,7 @@ class adminController extends Controller
                     ]
                 )){
                     return response()->json([
-                        'status' => 'Berhasil',
+                        'status' => 'berhasil',
                         'message' => 'Data berhasil disimpan'
                     ]);
                 }else{
@@ -98,7 +98,13 @@ class adminController extends Controller
                         'message'=>'Berhasil login',
                         'token'=> $jwt
                     ]);
+                }else{
+                    return response()->json([
+                        'status'=>'gagal',
+                        'message'=>'Password salah'
+                    ]);
                 }
+                
             }
         }else{
             return response()->json([
@@ -129,7 +135,7 @@ class adminController extends Controller
             if($decoded_array['extime']> time()){
                 if(Admin::where('id_user',$request->id_user)->delete()){
                     return response()->json([
-                        'status' => 'Berhasil',
+                        'status' => 'berhasil',
                         'message' => 'Data berhasil dihapus'
                     ]);
                 }else{
@@ -154,7 +160,7 @@ class adminController extends Controller
 
     public function listAdmin(Request $request){
         $validator = Validator::make($request->all(),[
-            'id_user' =>'required',
+            // 'id_user' =>'required',
             'token'     => 'required'
         ]);
         if($validator->fails()){
