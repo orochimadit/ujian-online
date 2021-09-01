@@ -29,6 +29,7 @@ class VerifyCsrfToken extends Middleware
         '/hapusKonten',
         '/listKonten',
         '/registrasi',
-        '/loginPeserta'
+        '/loginPeserta',
+        '/listKontenPeserta'
     ];
 }
