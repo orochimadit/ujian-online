@@ -26,3 +26,4 @@ Route::post('/hapusKonten','kontenController@hapusKonten');
 Route::post('/listKonten','kontenController@listKonten');
 
 Route::post('/registrasi','pesertaController@registrasi');
+Route::post('/loginPeserta','pesertaController@loginPeserta');

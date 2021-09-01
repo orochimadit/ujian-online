@@ -48,4 +48,51 @@ class pesertaController extends Controller
         }
       
     }
+
+    public function loginPeserta(Request $request){
+        $validator = Validator::make($request->all(),[
+            
+            'email' =>'required',
+            'password' =>'required',
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'gagal',
+                'message' => $validator->messages()
+            ]);
+        }
+        $cek =Peserta::where('email',$request->email)->count();
+        $peserta = Peserta::where('email',$request->email)->get();
+        if($cek>0){
+            foreach($peserta as $pst){
+                if($request->password ==decrypt($pst->password)){
+                    $key = env('APP_KEY');
+                    $data = array(
+                        "extime"=> time()+(60*120),
+                        "id_peserta"=> $pst->id_peserta
+                    );
+                    $jwt= JWT::encode($data,$key);
+                    Peserta::where('id_peserta',$pst->id_peserta)->update([
+                        'token' => $jwt
+                    ]);
+                    return response()->json([
+                        'status'=>'Berhasil',
+                        'message'=>'Berhasil login',
+                        'token'=> $jwt
+                    ]);
+                }else{
+                    return response()->json([
+                        'status'=>'gagal',
+                        'message'=>'Password salah'
+                    ]);
+                }
+                
+            }
+        }else{
+            return response()->json([
+                'status'=>'gagal',
+                'message'=>'Email tidak terdaftar'
+            ]);
+        }
+    }
 }
