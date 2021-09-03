@@ -28,3 +28,4 @@ Route::post('/listKontenPeserta','kontenController@listKontenPeserta');
 
 Route::post('/registrasi','pesertaController@registrasi');
 Route::post('/loginPeserta','pesertaController@loginPeserta');
+Route::post('/listSoal','ujianController@listSoal');
