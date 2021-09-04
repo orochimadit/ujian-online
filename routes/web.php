@@ -29,3 +29,6 @@ Route::post('/listKontenPeserta','kontenController@listKontenPeserta');
 Route::post('/registrasi','pesertaController@registrasi');
 Route::post('/loginPeserta','pesertaController@loginPeserta');
 Route::post('/listSoal','ujianController@listSoal');
+Route::post('/jawab','ujianController@jawab');
+Route::post('/hitungSkor','ujianController@hitungSkor');
+Route::post('/selesaiUjian','ujianController@selesaiUjian');
